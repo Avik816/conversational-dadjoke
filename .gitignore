@@ -1,0 +1,8 @@
+# Virtual Environments
+venv/
+
+# Datasets Folder
+data/
+
+# Cache Folder
+__pycache__
