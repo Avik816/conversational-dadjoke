@@ -1,4 +1,5 @@
 import polars
+from pathlib import Path
 
 
 def merge_dataset():
@@ -8,6 +9,8 @@ def merge_dataset():
     dataset = train.vstack(test)
 
     print(dataset.head())
+
+    Path('src/data/merged').mkdir(parents=True, exist_ok=True)
 
     dataset.write_csv('src/data/merged/dad_jokes.csv')
 
