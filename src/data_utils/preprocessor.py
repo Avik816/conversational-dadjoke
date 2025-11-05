@@ -127,12 +127,15 @@ def preprocess_dataset():
     dataset = dataset.filter(~(polars.col('question').len().is_between(1, 5, 'both')))
     print(f'\nAfter filterign out short texts, Dataset Shape: {dataset.shape}')
 
+    # Adding ids to each joke
     print('\nAdding columns')
     dataset = dataset.with_columns((
         polars.lit('jk_') + polars.arange(
             start=1, end=dataset.height + 1, step=1
         ).cast(polars.Utf8)).alias('joke_id')
     )
+    # Reordering so joke_id is first
+    dataset = dataset.select(['joke_id'] + [c for c in dataset.columns if c != 'joke_id'])
 
     print('\nFinal dataset after cleaning ... \n')
     print(dataset.head())
