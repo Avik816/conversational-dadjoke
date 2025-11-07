@@ -1,9 +1,17 @@
-# Raw Dataset paths
-TRAIN_SET = 'data/raw/train_raw.csv'
-TEST_SET = 'data/raw/test_raw.csv'
+# HuggingFace dad joke location
+HF_DADJOKE_LOC = 'shuttie/dadjokes'
 
-# Merged Dataset path
-MERGED_SET = 'data/merged/dad_jokes.csv'
+# Raw dataset directory
+RAW_SET_DIR = 'data/raw'
 
-# Cleaned Merged Dataset path
-FINAL_SET = 'data/cleaned/dad_jokes.csv'
+# Merged dataset directory
+MERGED_SET_DIR = 'data/merged'
+
+# Cleaned Merged dataset directory
+FINAL_SET_DIR = 'data/cleaned'
+
+# Embedding model directory
+MODEL_DIR = 'models/embedder'
+
+# Embedded dataset directory
+# EMBEDDED_SET_DIR = 
