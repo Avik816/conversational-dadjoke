@@ -10,9 +10,11 @@ It clears the data from any of the folllowing:
     7. Removing any rows that had questions of length < 5 (according to string length).
 '''
 
-import polars
+
+from src.utils.dataset_loader import read_dataset
+from config.paths import MERGED_SET_DIR, FINAL_SET_DIR
 import re
-from pathlib import Path
+import polars
 
 
 def checking_for_url(text):
@@ -79,7 +81,7 @@ def cleaning_text(text):
 
 # Applying the custom functions on the dataset
 def preprocess_dataset():
-    dataset = polars.read_csv('data/merged/dad_jokes.csv')
+    dataset = read_dataset(MERGED_SET_DIR + '/dad_jokes.csv', 'csv')
     print(f'Original Shape: {dataset.shape}')
 
     # Checking and removing rows with NaN and Null values
@@ -140,6 +142,5 @@ def preprocess_dataset():
     print('\nFinal dataset after cleaning ... \n')
     print(dataset.head())
 
-    Path('data/cleaned').mkdir(parents=True, exist_ok=True)
-    dataset.write_csv('data/cleaned/dad_jokes.csv')
+    dataset.write_csv(FINAL_SET_DIR + '/dad_jokes.csv')
     print('Cleaned dataset saved !')

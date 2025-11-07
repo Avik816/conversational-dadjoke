@@ -3,15 +3,13 @@
 # This scripts converts the dataset from the said format to .csv.
 
 from datasets import load_dataset
-from pathlib import Path
+from config.paths import HF_DADJOKE_LOC, RAW_SET_DIR
 
 
 def download_dataset():
-    dataset = load_dataset('shuttie/dadjokes')
+    dataset = load_dataset(HF_DADJOKE_LOC)
 
-    Path('data/raw').mkdir(parents=True, exist_ok=True)
-
-    dataset['train'].to_csv('data/raw/train_raw.csv')
-    dataset['test'].to_csv('data/raw/test_raw.csv')
+    dataset['train'].to_csv(RAW_SET_DIR + '/train_raw.csv')
+    dataset['test'].to_csv(RAW_SET_DIR + '/test_raw.csv')
 
     return 'Raw Datasets downloaded !\n'
