@@ -1,3 +1,6 @@
+# This module holds the paths
+
+
 # HuggingFace dad joke location
 HF_DADJOKE_LOC = 'shuttie/dadjokes'
 
@@ -14,4 +17,4 @@ FINAL_SET_DIR = 'data/cleaned'
 MODEL_DIR = 'models/embedder'
 
 # Embedded dataset directory
-# EMBEDDED_SET_DIR = 
+EMBEDDED_SET_DIR = 'db/vector_embedds'
