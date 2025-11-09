@@ -1,10 +1,12 @@
-# This scrpts loads the embedder model
+# This script loads the embedder model.
 
 
 from sentence_transformers import SentenceTransformer
+from config.file_names import EMBEDDER_MODEL
 from config.paths import MODEL_DIR
 
+
 def load_model():
-    model = SentenceTransformer('all-MiniLM-L6-v2', cache_folder=MODEL_DIR)
+    model = SentenceTransformer(EMBEDDER_MODEL, cache_folder=MODEL_DIR)
 
     return model

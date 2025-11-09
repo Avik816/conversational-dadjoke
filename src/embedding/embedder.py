@@ -1,37 +1,40 @@
+# This script is used to generate the embeddings for the dataset.
+
+
+from config.paths import FINAL_SET_DIR, EMBEDDED_SET_DIR
+from utils.dataset_loader import read_dataset
 import polars
-from sentence_transformers import SentenceTransformer
+from utils.model_loader import load_model
 import numpy
-import os
 
 
 def generate_embeddings():
     # Loading the dataset
-    dataset = polars.read_csv('data/cleaned/dad_jokes.csv')
+    dataset = read_dataset(FINAL_SET_DIR + '/dad_jokes.csv', 'csv')
 
-    # Combining setup + response into a single text field for embedding
-    dataset = dataset.with_columns(
-        (polars.col('setup').str.strip() + ' ' + polars.col('response').str.strip()).alias('joke_text')
+    # Combining setup + response into a single text field for embedding.
+    dataset = dataset.with_columns((
+        polars.col('question').str.strip() + ' ' +
+        polars.col('response').str.strip()
+        ).alias('joke_text')
     )
 
-    # Loading embedding model to a custom directory
-    model_dir = 'models/embedder/all-MiniLM-L6-v2'
-    os.makedirs(model_dir, exist_ok=True)
-    model = SentenceTransformer('all-MiniLM-L6-v2', cache_folder=model_dir)
+    # Loading embedding model to a custom directory.
+    model = load_model()
 
-    # Generating embeddings for the combined text
-    jokes_texts = dataset['joke_text'].to_list()
+    # Generating embeddings for the combined text.
+    jokes_texts = dataset['joke_texts'].to_list()
     embeddings = model.encode(jokes_texts, normalize_embeddings=True)
 
-    # Adding embeddings as a new column
+    # Adding embeddings as a new column.
     dataset = dataset.with_columns(
         polars.Series('embedding', [e.tolist() for e in embeddings])
     )
 
-    # Saving the dataset with embeddings
-    os.makedirs('data/processed', exist_ok=True)
-    dataset.write_parquet('data/processed/jokes_with_embeddings.parquet')
+    # Saving the dataset with embeddings.
+    dataset.write_parquet(EMBEDDED_SET_DIR + '/dadjoke_embedded.parquet')
 
-    # Save just the embeddings separately (for FAISS use)
-    numpy.save('data/processed/joke_embeddings.npy', embeddings)
+    # Saving just the embeddings separately for FAISS use.
+    numpy.save(EMBEDDED_SET_DIR + '/joke_embeddings.npy', embeddings)
 
     return 'Embeddings generated and saved successfully.\n'
