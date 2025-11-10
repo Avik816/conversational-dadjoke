@@ -1,17 +1,18 @@
 # This script converts the two train and test dataset into one single parent dataset.
 
 
-from config.paths import RAW_SET_DIR, MERGED_SET_DIR
 from src.utils.dataset_loader import read_dataset
+from config.paths import RAW_SET_DIR, MERGED_SET_DIR
+from config.file_names import TRAIN, TEST, TYPE1, FULL_FILE
 
 
 def merge_dataset():
-    train = read_dataset(RAW_SET_DIR + '/train_raw.csv', 'csv')
-    test = read_dataset(RAW_SET_DIR + '/test_raw.csv', 'csv')
+    train = read_dataset(f'{RAW_SET_DIR}/{TRAIN}', TYPE1)
+    test = read_dataset(f'{RAW_SET_DIR}/{TEST}', TYPE1)
 
     dataset = train.vstack(test)
     print(dataset.head())
 
-    dataset.write_csv(MERGED_SET_DIR + '/dad_jokes.csv')
+    dataset.write_csv(f'{MERGED_SET_DIR}/{FULL_FILE}')
 
     return 'Full Dataset saved !\n'

@@ -13,6 +13,7 @@ It clears the data from any of the folllowing:
 
 from src.utils.dataset_loader import read_dataset
 from config.paths import MERGED_SET_DIR, FINAL_SET_DIR
+from config.file_names import FULL_FILE, TYPE1
 import re
 import polars
 
@@ -81,7 +82,7 @@ def cleaning_text(text):
 
 # Applying the custom functions on the dataset
 def preprocess_dataset():
-    dataset = read_dataset(MERGED_SET_DIR + '/dad_jokes.csv', 'csv')
+    dataset = read_dataset(f'{MERGED_SET_DIR}/{FULL_FILE}', TYPE1)
     print(f'Original Shape: {dataset.shape}')
 
     # Checking and removing rows with NaN and Null values
@@ -142,5 +143,5 @@ def preprocess_dataset():
     print('\nFinal dataset after cleaning ... \n')
     print(dataset.head())
 
-    dataset.write_csv(FINAL_SET_DIR + '/dad_jokes.csv')
+    dataset.write_csv(f'{FINAL_SET_DIR}/{FULL_FILE}')
     print('Cleaned dataset saved !')

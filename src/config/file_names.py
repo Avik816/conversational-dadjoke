@@ -14,3 +14,6 @@ EMBEDDER_MODEL = 'all-MiniLM-L6-v2'
 # Embedded dataset
 EMBEDDED_SET = 'dadjoke_embedded.parquet'
 JOKE_EMBEDDINGS = 'joke_embeddings.npy'
+
+# File types
+TYPE1 = 'csv'

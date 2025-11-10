@@ -2,6 +2,7 @@
 
 
 from config.paths import FINAL_SET_DIR, EMBEDDED_SET_DIR
+from config.file_names import FULL_FILE, TYPE1, EMBEDDED_SET, JOKE_EMBEDDINGS
 from utils.dataset_loader import read_dataset
 import polars
 from utils.model_loader import load_model
@@ -10,7 +11,7 @@ import numpy
 
 def generate_embeddings():
     # Loading the dataset
-    dataset = read_dataset(FINAL_SET_DIR + '/dad_jokes.csv', 'csv')
+    dataset = read_dataset(f'{FINAL_SET_DIR}/{FULL_FILE}', TYPE1)
 
     # Combining setup + response into a single text field for embedding.
     dataset = dataset.with_columns((
@@ -32,9 +33,9 @@ def generate_embeddings():
     )
 
     # Saving the dataset with embeddings.
-    dataset.write_parquet(EMBEDDED_SET_DIR + '/dadjoke_embedded.parquet')
+    dataset.write_parquet(f'{EMBEDDED_SET_DIR}/{EMBEDDED_SET}')
 
     # Saving just the embeddings separately for FAISS use.
-    numpy.save(EMBEDDED_SET_DIR + '/joke_embeddings.npy', embeddings)
+    numpy.save(f'{EMBEDDED_SET_DIR}/{JOKE_EMBEDDINGS}', embeddings)
 
     return 'Embeddings generated and saved successfully.\n'

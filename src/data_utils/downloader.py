@@ -4,12 +4,13 @@
 
 from datasets import load_dataset
 from config.paths import HF_DADJOKE_LOC, RAW_SET_DIR
+from config.file_names import TRAIN, TEST
 
 
 def download_dataset():
     dataset = load_dataset(HF_DADJOKE_LOC)
 
-    dataset['train'].to_csv(RAW_SET_DIR + '/train_raw.csv')
-    dataset['test'].to_csv(RAW_SET_DIR + '/test_raw.csv')
+    dataset['train'].to_csv(f'{RAW_SET_DIR}/{TRAIN}')
+    dataset['test'].to_csv(f'{RAW_SET_DIR}/{TEST}')
 
     return 'Raw Datasets downloaded !\n'
