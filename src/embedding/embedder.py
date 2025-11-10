@@ -25,7 +25,12 @@ def generate_embeddings():
 
     # Generating embeddings for the combined text.
     jokes_texts = dataset['joke_text'].to_list()
-    embeddings = model.encode(jokes_texts, normalize_embeddings=True)
+    embeddings = model.encode(
+        sentences=jokes_texts,
+        normalize_embeddings=True,
+        batch_size=32,
+        show_progress_bar=True
+    )
 
     # Adding embeddings as a new column.
     dataset = dataset.with_columns(
