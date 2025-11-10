@@ -1,7 +1,7 @@
 # This script creates the necessary directories for this project.
 
 
-from config.paths import *
+from ..config.paths import *
 from pathlib import Path
 import os
 

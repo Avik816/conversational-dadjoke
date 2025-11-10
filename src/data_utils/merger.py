@@ -2,8 +2,8 @@
 
 
 from src.utils.dataset_loader import read_dataset
-from config.paths import RAW_SET_DIR, MERGED_SET_DIR
-from config.file_names import TRAIN, TEST, TYPE1, FULL_FILE
+from ..config.paths import RAW_SET_DIR, MERGED_SET_DIR
+from ..config.file_names import TRAIN, TEST, TYPE1, FULL_FILE
 
 
 def merge_dataset():

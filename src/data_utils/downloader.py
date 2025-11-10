@@ -3,8 +3,8 @@
 # This scripts converts the dataset from the said format to .csv.
 
 from datasets import load_dataset
-from config.paths import HF_DADJOKE_LOC, RAW_SET_DIR
-from config.file_names import TRAIN, TEST
+from ..config.paths import HF_DADJOKE_LOC, RAW_SET_DIR
+from ..config.file_names import TRAIN, TEST
 
 
 def download_dataset():

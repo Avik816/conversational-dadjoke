@@ -11,9 +11,9 @@ It clears the data from any of the folllowing:
 '''
 
 
-from src.utils.dataset_loader import read_dataset
-from config.paths import MERGED_SET_DIR, FINAL_SET_DIR
-from config.file_names import FULL_FILE, TYPE1
+from ..utils.dataset_loader import read_dataset
+from ..config.paths import MERGED_SET_DIR, FINAL_SET_DIR
+from ..config.file_names import FULL_FILE, TYPE1
 import re
 import polars
 
