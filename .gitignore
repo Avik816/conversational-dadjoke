@@ -5,7 +5,10 @@ venv/
 data/
 
 # Cache Folder
-__pycache__
+__pycache__/
 
 # Database Folder
 db/
+
+# Model folder
+models/
