@@ -15,7 +15,7 @@ def generate_embeddings():
 
     # Combining setup + response into a single text field for embedding.
     dataset = dataset.with_columns((
-        polars.col('question').str.strip_chars() + ' ' +
+        polars.col('question').str.strip_chars() + '. ' +
         polars.col('response').str.strip_chars()
         ).alias('joke_text')
     )
@@ -36,6 +36,9 @@ def generate_embeddings():
     dataset = dataset.with_columns(
         polars.Series('embedding', [e.tolist() for e in embeddings])
     )
+
+    # Drop unnecessary columns
+    dataset = dataset.drop(['question', 'response'])
 
     # Saving the dataset with embeddings.
     dataset.write_parquet(f'{EMBEDDED_SET_DIR}/{EMBEDDED_SET}')
