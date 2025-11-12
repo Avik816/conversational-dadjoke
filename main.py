@@ -14,7 +14,7 @@ print('\n\nMerging the dataset...')
 merge_dataset()
 
 print('\n\nPreprocessing the dataset...')
-preprocess_dataset()"""
+preprocess_dataset()
 
 print('Embedding the jokes...')
-generate_embeddings()
+generate_embeddings()"""
