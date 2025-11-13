@@ -2,6 +2,7 @@
 
 
 from ..config.paths import *
+from ..config.file_names import *
 from pathlib import Path
 import os
 
@@ -17,5 +18,7 @@ def create_dirs():
         Path('models/embedder').mkdir(parents=True, exist_ok=True)
     if not os.path.exists(EMBEDDED_SET_DIR):
         Path('db/vector_embedds').mkdir(parents=True, exist_ok=True)
+    if not os.path.exists(INDEX_SET_DIR):
+        Path(INDEX_SET_DIR).mkdir(parents=True, exist_ok=True)
 
     return 'Necessary Directories created.\n'
