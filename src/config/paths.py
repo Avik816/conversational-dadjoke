@@ -18,3 +18,6 @@ MODEL_DIR = 'models/embedder'
 
 # Embedded dataset directory
 EMBEDDED_SET_DIR = 'db/vector_embedds'
+
+# Index dataset directory
+INDEX_SET_DIR = 'db/vector_index'
