@@ -16,5 +16,8 @@ merge_dataset()
 print('\n\nPreprocessing the dataset...')
 preprocess_dataset()
 
-print('Embedding the jokes...')
+print('\n\nEmbedding the jokes...')
 generate_embeddings()"""
+
+print('\n\nGenerating index w.r.t each embedded jokes...')
+generate_faiss_index()
