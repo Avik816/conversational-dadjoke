@@ -30,8 +30,9 @@ def generate_faiss_index():
     # Saving joke_id with FAISS position mapping
     id_map = polars.DataFrame({
         'joke_id': joke_ids,
-        'faiss_index': list(range(len(joke_ids)))        
+        'faiss_index': [f'fid_{i}' for i in range(1, len(joke_ids) + 1)]
     })
+
     id_map.write_parquet(f'{INDEX_SET_DIR}/{ID_MAP_SET}')
 
     print('FAISS index and ID mapping saved successfully.\n')
