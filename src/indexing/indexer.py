@@ -1,3 +1,6 @@
+# This script is used to for creating the FAISS indices for the jokes.
+
+
 from ..utils.dataset_loader import read_dataset
 from ..config.paths import EMBEDDED_SET_DIR, INDEX_SET_DIR
 from ..config.file_names import EMBEDDED_SET, TYPE2, INDEX_SET, ID_MAP_SET

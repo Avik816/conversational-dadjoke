@@ -1,3 +1,6 @@
+# This script tests the dataset's schematic order.
+
+
 import polars, faiss
 
 
