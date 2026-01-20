@@ -1,0 +1,183 @@
+html {
+    scroll-behavior: smooth;
+}
+
+@font-face {
+    font-family: "Comic Neue";
+    src: url("../elements/ComicNeue-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: "Comic Neue", sans-serif;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+}
+
+.root {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(230, 227, 227);    
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.app-window {
+    height: 80%;
+    width: 50%;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px silver;
+    background-color: whitesmoke;
+
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-space {
+    height: 80%;
+    width: 95%;
+    border-radius: 20px;
+    background-color: white;
+    overflow-y: auto;       /* enables scrolling */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.chat-space::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* Chrome, Safari */
+}
+
+.user-input-space {
+    height: 10%;
+    width: 95%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#userInput {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    background-color: white;
+    border: none;
+    box-sizing: border-box;
+    padding: 20px 80px 20px 20px;
+    font-size: 16px;
+    color: darkslategrey;
+    outline: none;
+    font-family: "Comic Neue", sans-serif;
+}
+
+#userInput:focus {
+    border: none;
+    outline: none;
+}
+
+#userInput::placeholder {
+    font-family: "Comic Neue", sans-serif;
+}
+
+#sendButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    right: 1.5%;
+
+    border: none;
+    cursor: pointer;
+    height: 70%;
+    width: 6.5%;
+    background-color: blueviolet;
+    border-radius: 15px;
+}
+
+#sendButton img {
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+    color: blueviolet;
+}
+
+#sendButton:hover img {
+    filter: brightness(0.8);
+}
+
+/* Message row container */
+.message-row {
+    display: flex;
+    align-items: flex-end;  /* bottom align bubble with avatar */
+    margin: 8px 0;
+    width: 100%;
+}
+
+/* AI messages on left */
+.ai-msg {
+    justify-content: flex-start;
+}
+
+/* User messages on right */
+.user-msg {
+    justify-content: flex-end;
+}
+
+/* Avatar */
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 8px;
+}
+
+/* Message bubble common styling */
+.message-bubble {
+    max-width: 70%;              /* dynamic, max 70% of chat-space */
+    padding: 10px 14px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word;       /* wrap long text */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* AI bubble styling */
+.ai-msg .message-bubble {
+    background-color: #e5e5ea;  /* light gray bubble */
+    color: #000;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+    border-bottom-left-radius: 18px;
+}
+
+/* User bubble styling */
+.user-msg .message-bubble {
+    background-color: blueviolet;  /* WhatsApp-style blue */
+    color: white;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 18px;
+    border-bottom-left-radius: 18px;
+}
+
+/* Optional: smooth wrapping for very long text */
+.message-bubble {
+    display: inline-block;
+}
+
