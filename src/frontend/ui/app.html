@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Conversational Joke AI (placeholder)</title>
+
+        <link rel="stylesheet" href="app.css">
+        <script src="app.js" defer></script>
+    </head>
+
+    <body>
+        <div class="root">
+            <div class="app-window">
+                <div class="chat-space">
+                    <!-- AI message -->
+                    <div class="message-row ai-msg">
+                        <img src="../elements/ai_icon.svg" alt="AI" class="avatar">
+                        <div class="message-bubble">
+                            Hello! Want to hear a joke?
+                        </div>
+                    </div>
+
+                    <!-- User message -->
+                    <div class="message-row user-msg">
+                        <div class="message-bubble">
+                            Yes, tell me one!
+                        </div>
+                        <img src="../elements/user_icon.svg" alt="User" class="avatar">
+                    </div>
+                </div>
+
+                <div class="user-input-space">
+                    <input type="text" placeholder="Wanna hear a joke..." id="userInput">
+                    <button id="sendButton">
+                        <img src="../elements/send_button.svg" alt="Send">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
