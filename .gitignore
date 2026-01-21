@@ -1,3 +1,6 @@
+# Custom editor environments
+.vscode/
+
 # Virtual Environments
 venv/
 
