@@ -4,7 +4,7 @@ html {
 
 @font-face {
     font-family: "Comic Neue";
-    src: url("../elements/ComicNeue-Regular.ttf") format("truetype");
+    src: url("assets/fonts/ComicNeue-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
